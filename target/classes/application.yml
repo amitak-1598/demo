@@ -1,0 +1,32 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: demo
+  mail:
+    port: 587
+    username: niteshsaini80779@gmail.com
+    password: "luvq vlax dyji pykk"
+    properties:
+      mail:
+      starttls:
+        enable: true
+        smtp:
+          starttls:
+          ssl:
+            trust: smtp.gmail.com
+            required: true
+          auth: true
+
+  mongodb:
+    uri: mongodb://localhost:27017/mydb
+
+  data:
+    mongodb:
+      auto-index-creation: true
+    redis:
+      host: localhost
+      port: 6379
+
+  profiles:
+    active: dev

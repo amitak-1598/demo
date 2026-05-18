@@ -1,0 +1,6 @@
+server:
+  port: 8000
+
+qoute:
+  api:
+    key: 5f1a261116msh3217341e7ed27a8p1c524bjsn641bc2d2768b
