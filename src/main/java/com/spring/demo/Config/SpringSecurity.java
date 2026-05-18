@@ -15,8 +15,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.client.RestTemplate;
 
+import com.spring.demo.Filters.JwtFilter;
 import com.spring.demo.Service.UserDetailServiceImpl;
 
 import org.springframework.security.core.userdetails.User;
@@ -29,6 +31,9 @@ public class SpringSecurity {
 	@Autowired
 	private UserDetailServiceImpl userDetailService;
 
+	@Autowired
+	private JwtFilter jwtFilter;
+
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		return http.csrf(token -> token.disable())
@@ -36,7 +41,9 @@ public class SpringSecurity {
 						.requestMatchers("/admin/**").hasRole("ADMIN").requestMatchers("/api/user/**").hasRole("USER")
 						.requestMatchers("/utility/**").hasRole("DEVELOPER").anyRequest().authenticated())
 				.httpBasic(httpBasic -> {
-				}).build();
+				}).addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
+
+				.build();
 	}
 
 	@Bean

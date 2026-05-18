@@ -1,0 +1,8 @@
+com\spring\demo\ServiceImpl\WeatherTests.class
+com\spring\demo\ServiceImpl\UserServiceTests.class
+com\spring\demo\Service\ArgumentProviderImpl.class
+com\spring\demo\ServiceImpl\JournalServiceTests.class
+com\spring\demo\Service\SentimentsTests.class
+com\spring\demo\DemoApplicationTests.class
+com\spring\demo\ServiceImpl\RedisTests.class
+com\spring\demo\Util\EntryArguments.class

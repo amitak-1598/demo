@@ -89,6 +89,8 @@ public class UserController {
 		Map<String, String> sendResponse = new HashMap<>();
 		sendResponse.put("message", message);
 		sendResponse.put("status", response.getStatusCode().toString());
+		String name = SecurityContextHolder.getContext().getAuthentication().getName();
+		System.out.println("Name "+name);
 		return new ResponseEntity<>(sendResponse, response.getStatusCode());
 
 	}
