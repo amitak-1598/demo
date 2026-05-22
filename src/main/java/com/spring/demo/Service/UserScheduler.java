@@ -2,6 +2,8 @@ package com.spring.demo.Service;
 
 import com.spring.demo.Constants.Sentiments;
 import com.spring.demo.Repository.UserRepositoryImpl;
+
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import com.spring.demo.entity.User;
 
@@ -22,6 +24,7 @@ public class UserScheduler {
 		this.emailService = emailService;
 	}
 
+//	@Scheduled(cron = "0 * * * * */")ss
 	public void fetchSentimentsAndSendMail() {
 		List<User> users = userRepository.getUsersHavingEmailAndSA();
 		for (User user : users) {
@@ -49,9 +52,12 @@ public class UserScheduler {
 					maxKey = key;
 				}
 			}
+			// null check
+			if (maxKey != null) {
+				emailService.sendMail(user.getEmail(), "Most Last 7 days Sentiments",
+						"The most last seven days sentiment " + maxKey);
+			}
 			// send mail
-			emailService.sendMail(user.getEmail(), "Most Last 7 days Sentiments",
-					"The most last seven days sentiment " + maxKey);
 
 		}
 	}

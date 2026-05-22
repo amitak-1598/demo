@@ -5,8 +5,8 @@ spring:
     name: demo
   mail:
     port: 587
-    username: niteshsaini80779@gmail.com
-    password: "luvq vlax dyji pykk"
+    username: amitak3107@gmail.com
+    password: "mcxt hqrz qctp gtbk"
     properties:
       mail:
       starttls:
